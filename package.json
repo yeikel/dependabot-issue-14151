@@ -1,0 +1,11 @@
+{
+  "name": "dependabot-issue-14151",
+  "version": "1.0.0",
+  "description": "Reproducer for dependabot/dependabot-core#14151",
+  "engines": {
+    "npm": ">=11.10.0"
+  },
+  "dependencies": {
+    "vue": "3.3.4"
+  }
+}
