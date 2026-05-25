@@ -1,0 +1,8 @@
+{
+  "name": "dependabot-issue-14151",
+  "version": "1.0.0",
+  "description": "Reproducer for dependabot/dependabot-core#14151",
+  "dependencies": {
+    "etag": "1.8.0"
+  }
+}
