@@ -4,8 +4,8 @@ updates:
     directory: "/"
     cooldown:
       default-days: 30
-      semver-major-days: 10
-      semver-minor-days: 20
+      semver-major-days: 30
+      semver-minor-days: 10
       semver-patch-days: 7
       include:  
        - "*"
