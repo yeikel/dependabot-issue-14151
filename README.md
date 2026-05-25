@@ -18,7 +18,12 @@ Dependabot successfully opens a pull request updating `vue` to the latest
 version even when that version was published within the 730-day window. The
 PR violates the `min-release-age` constraint the project has opted into.
 
-If the PR is merged and `npm install` is run, npm rejects the install:
+Dependabot does not fail during its own update check because it runs npm
+11.8.0, which predates the `min-release-age` feature (introduced in
+11.10.0). The constraint is only enforced when a developer or CI pipeline
+runs a compliant npm version against the merged result.
+
+If the PR is merged and `npm install` is run with npm >= 11.10.0, it rejects the install:
 
 ```
 npm error code ETARGET
