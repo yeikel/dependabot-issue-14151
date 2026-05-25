@@ -8,7 +8,7 @@ updates:
       semver-minor-days: 20
       semver-patch-days: 7
       include:  
-        "*"
+       - "*"
 
     schedule:
       interval: daily
