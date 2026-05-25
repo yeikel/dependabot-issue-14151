@@ -4,8 +4,8 @@
 
 This project sets `min-release-age=730` in `.npmrc`, telling npm to refuse
 installing any package version published less than 730 days ago. Dependabot
-ignores this setting and proposes updates to the latest version regardless
-of how recently it was published.
+ignores this setting and proposes updates to versions that were published
+within that window, violating the project's configuration.
 
 ## Expected behavior
 
@@ -14,9 +14,11 @@ cooldown, proposing only versions that are at least 730 days old.
 
 ## Actual behavior
 
-Dependabot opens a pull request updating `vue` to the latest version even
-when that version was published within the 730-day window. Running
-`npm install` after merging such a PR fails with:
+Dependabot successfully opens a pull request updating `vue` to the latest
+version even when that version was published within the 730-day window. The
+PR violates the `min-release-age` constraint the project has opted into.
+
+If the PR is merged and `npm install` is run, npm rejects the install:
 
 ```
 npm error code ETARGET
@@ -29,9 +31,8 @@ npm error notarget requesting a package version that doesn't exist.
 
 1. Fork this repository and enable Dependabot.
 2. Dependabot opens a PR proposing `vue` be updated to the latest version.
-3. Merge the PR and run `npm install`.
-4. npm rejects the install because the proposed version is younger than
-   the 730-day `min-release-age` threshold.
+3. The proposed version is younger than the 730-day `min-release-age`
+   threshold, so the PR conflicts with the project's npm configuration.
 
 ## Root cause
 
